@@ -13,7 +13,7 @@ function Mon($ip, $port) {
 	}
 	array_push($array, $mon[0]);
 	$handle = fopen($filename, "w");
-	fwrite($handle, json_encode(array($array,$mon[1])));
+	fwrite($handle, json_encode(array($array,$mon[1],$mon[2])));
 	fclose($handle);
 }
 
@@ -25,7 +25,7 @@ function Query($ip, $port) {
 	$Query->Connect($ip, $port, $time);
 	$Players = $Query->GetInfo()['Players'];
 	$MaxPlayers = $Query->GetInfo()['MaxPlayers'];
-	return array($Players,$MaxPlayers);
+	return array($Players,$MaxPlayers,time());
 }
 
 function draw($title,$ip,$port) {
